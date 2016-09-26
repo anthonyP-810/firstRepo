@@ -1,5 +1,19 @@
+<<<<<<< HEAD
 h1 
 {
 color:red;
 }
 
+=======
+*
+{
+padding: 0px;
+margin: 0px;
+}
+
+h1
+{
+font-weight: bold;
+color: red;
+}
+>>>>>>> parent of 04a1586... Index and Stylesheet
