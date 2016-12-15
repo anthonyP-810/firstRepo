@@ -1,0 +1,146 @@
+<div>
+ <div>
+<h1>Welcome, <%= @user.first_name %></h1>
+   <a href="/user/edit">Edit Profile</a>
+   <a href="/session/logout">Logout</a>
+ </div>
+  <div>
+    <h3>Here are some of the events at your state:</h3>
+    <table style="width: 600px">
+      <thead>
+        <tr>
+          <td>Title</td>
+          <td>Date</td>
+          <td>City</td>
+          <td>Host</td>
+          <td>Action/Status</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @events.each do |e| %>
+        <tr>
+          <td><%= e.title %></td>
+        
+          <td>
+            <%= e.date %>
+          </td>
+          <td>
+            <%= e.city %>
+          </td>
+          <td>
+            <%= e.host.first_name %>
+          </td>
+          <% if e.users.id.include?(session[:user_id]) %>
+          <td>Joined</td>
+          <td>
+            <a href="/event/cancel">Cancel</a>
+          </td>
+          <% elsif e.host.id == session[:user_id] %>
+          <td>
+            <a href="/event/<%= e.id %>/edit">Edit</a>
+            <a href="/event/<%= e.id %>" data-method="delete">Delete</a>
+          </td>
+          <% else %>
+          <td><a href="/event/<%= e.id %>/join" data-method="post">Join</a>
+          </td>
+          <% end %>
+        </tr>
+         <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <h3>Here are some of the events on other states:</h3>
+    <table>
+      <thead>
+        <tr>
+          <td>Title</td>
+          <td>Date</td>
+          <td>City</td>
+          <td>Host</td>
+          <td>Action/Status</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @all_events.each do |e| %>
+        <tr>
+          <td>
+            <%= e.title %>
+          </td>
+
+          <td>
+            <%= e.date %>
+          </td>
+          <td>
+            <%= e.city %>
+          </td>
+          <td>
+            <%= e.host.first_name %>
+          </td>
+          <% if e.host.id == session[:user_id] %>
+          <td>
+            <a href="/">Edit</a>
+          </td>
+          <td>
+            <a href="/event/cancel">Cancel</a>
+          </td>
+          <% else %>
+          <td>
+            <a href="/event/join">Join</a>
+          </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <h3>Add Event</h3>
+    <form action="/events/new" method="post">
+      <input type="hidden" name="authenticity_token" value="form_authenticity_token"/>
+    <table>
+      <tr>
+        <td>
+          Title:
+        </td>
+        <td>
+          <input type="text" name="event[title]"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Date:
+        </td>
+        <td>
+          <input type="date" name="event[date]"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          City:
+        </td>
+        <td>
+          <input type="text" name="event[city]"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <select name="event[state]">
+              <option value="CA">California</option>
+              <option value="WA">Washington</option>
+              <option value="TX">Texas</option>
+              <option value="NY">New York</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit" value="Add Event"/>
+        </td>
+      </tr>
+    </table>
+    </form>
+  </div>
+</div>

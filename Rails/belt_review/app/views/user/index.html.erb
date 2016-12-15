@@ -1,0 +1,103 @@
+<div>
+  <div>
+    <h2>Welcome!</h2>
+  </div>
+  
+ <div style="display: inline-block">
+    <form action="/user" method="post">
+      <input type="hidden" name="authenticity_token" value="form_authenticity_token" %/>
+      <h3>Register</h3>
+      <table>
+        <tr>
+          <td>First Name: 
+          </td>
+          <td><input type="text" name="user[first_name]"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Last Name:
+          </td>
+          <td>
+            <input type="text" name="user[last_name]"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Email:
+          </td>
+          <td>
+            <input type="text" name="user[email]"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            City:
+          </td>
+          <td>
+            <input type="text" name="user[city]"/>
+          </td>
+          <td>
+            <select name="user[state]">
+              <option value="CA">California</option>
+              <option value="WA">Washington</option>
+              <option value="TX">Texas</option>
+              <option value="NY">New York</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Password:
+          </td>
+          <td>
+            <input type="password" name="user[password]"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Confirm Password:
+          </td>
+          <td>
+            <input type="password" name="user[password_confirmation]"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" name="Register"/>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div style="display: inline-block; margin-left: 40px">
+    <form action="/session/new" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+      <h3>Login</h3>
+      <table>
+        <tr>
+          <td>
+            Email:
+          </td>
+          <td>
+            <input type="text" name="login[email]"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Password:
+          </td>
+          <td>
+            <input type="password" name="login[password]"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" value="Login"/>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

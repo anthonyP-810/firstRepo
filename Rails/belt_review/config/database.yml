@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  #username: ubuntu
+  pool: 5
+
+development:
+  <<: *default
+  database: belt_review_dev
+
+test:
+  <<: *default
+  database: belt_review_test
+
+production:
+  <<: *default
+  database: belt_review

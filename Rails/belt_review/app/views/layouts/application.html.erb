@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BeltReview</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div style="height: 30px; text-align:center;">
+<% flash.each do |k,v| %>
+<p style="font-weight: bold; text-align:center; background-color:red">
+  <%= v %>
+</p>
+<% end %>
+</div>
+<%= yield %>
+
+</body>
+</html>
